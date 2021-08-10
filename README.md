@@ -3,6 +3,7 @@
 ### Results
 
 **For Flickr8k dataset:**
+
 In the paper, the authors have not provided results on Flickr8k Dataset. Hence, comparative analysis is not possible.
 The following table contains results obtained from our experiments without fine-tuning the CNN. VGG-16 CNN is used for image representation.
 
@@ -27,3 +28,17 @@ The following table contains results obtained by fine-tuning the CNN with learni
 | 20 | 0.650 | 0.475 | 0.331 | 0.225 | 0.201 | 0.545 | 0.143 | 0.477 |
 
 
+**For Flickr30k dataset:**
+
+In the paper, the authors have provided results on Flickr30k Dataset. Hence, I have compared the results of my implementation with results in paper.
+The following table contains results obtained from our experiments without fine-tuning the CNN. VGG-16 CNN is used for image representation. Notably, authors have fine-tuned the CNN and used ResNet-152 CNN for image representation which performs better in Image Caption Generation, as noted in Katiyar et. al. [link](https://arxiv.org/abs/2102.11506).
+
+|Method |Beam | BLEU-1 | BLEU-2 | BLEU-3| BLEU-4| METEOR | CIDEr | SPICE | ROUGE-L |
+|---|---|---|---|---|---|---|---|---|---|
+| Paper | 3 |  |  |  |  |  |  |  |  |
+| Ours | 1 |  |  |  |  |  |  |  |  |
+| Ours | 3 |  |  |  |  |  |  |  |  |
+| Ours | 5 |  |  |  |  |  |  |  |  |
+| Ours | 10 |  |  |  |  |  |  |  |  |
+| Ours | 15 |  |  |  |  |  |  |  |  |
+| Ours | 20 |  |  |  |  |  |  |  |  |

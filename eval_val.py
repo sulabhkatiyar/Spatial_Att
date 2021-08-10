@@ -27,12 +27,10 @@ def evaluate(loader, encoder, decoder, criterion, word_map, device):
     rev_word_map = {v: k for k, v in word_map.items()}
     vocab_size = len(word_map)
 
-    image_names = list()
-
-    print("Evaluating on validation set...")
+    image_names = list()   
    
     for i, (image, caps, caplens, allcaps, image_name) in enumerate(
-            tqdm(loader, desc="EVALUATING WITHOUT Teacher Forcing")):
+            tqdm(loader, desc="EVALUATING ON VALIDATION SET")):
 
         k = beam_size
 

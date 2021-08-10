@@ -37,7 +37,6 @@ workers = 1  # for data-loading; right now, only 1 works with h5py
 encoder_lr = 1e-5  # learning rate for encoder if fine-tuning
 decoder_lr = 4e-4  # learning rate for decoder
 grad_clip = 5.  # clip gradients at an absolute value of
-alpha_c = 1.  # regularization parameter for 'doubly stochastic attention', as in the paper
 best_bleu1, best_bleu2, best_bleu3, best_bleu4 = 0.,0.,0.,0.  # BLEU scores right now
 guiding_bleu= 1 # 1: BLEU 1, 2: BLEU-2, 3: BLEU-3, 4: BLEU4 #THE BLEU METRIC USED TO GUIDE THE PROCESS
 print_freq = 1000  # print training/validation stats every __ batches

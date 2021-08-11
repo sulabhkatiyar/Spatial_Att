@@ -11,9 +11,9 @@ I have used Flickr8k and Flickr30k datasets for experiments. In the paper, autho
 
 The results on Flickr30k dataset can be summarized as:
 
-|Method | CNN Fine-Tune |Beam | BLEU-1 | BLEU-2 | BLEU-3| BLEU-4| METEOR | CIDEr | SPICE | ROUGE-L |
+|Implementation | CNN Fine Tune |Beam | BLEU-1 | BLEU-2 | BLEU-3| BLEU-4| METEOR | CIDEr | SPICE | ROUGE-L |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Original Implementation | Yes | 3 | 0.644 | 0.462 | 0.327 | 0.231 | 0.202 | 0.493 | 0.145 | 0.467 |
+| Paper | Yes | 3 | 0.644 | 0.462 | 0.327 | 0.231 | 0.202 | 0.493 | 0.145 | 0.467 |
 
 
 

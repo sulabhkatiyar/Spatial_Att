@@ -6,7 +6,9 @@ This is a Pytorch implementation of _Spatial Attention_ model proposed in _Knowi
 
 ## Results
 I have used Flickr8k and Flickr30k datasets for experiments. In the paper, authors train both the Caption Generator LSTM and the Encoder CNN (they use ResNet-152 CNN), i.e., they fine-tune the weights of pre-trained ResNet-152 CNN (which was originally trained for Object Recognition task). However, in most methods proposed in literature, the Encoder CNN has not been fine-tuned. Also, most earlier methods have used VGG-16 CNN. The choice of CNN influences Caption Generation performance, as noted in Katiyar et. al. [link](https://arxiv.org/abs/2102.11506). Hence, I have performed two sets of experiments:
+
 (a) Only Decoder (Caption-Generator) is trained with no fine-tuning of CNN. VGG-16 CNN is used as Encoder. 
+
 (b) CNN is fine-tuned with learning rate of 1e-5 and Caption Generator is trained with learning rate of 4e-4. The authors of paper have trained their model for 80 epochs and started CNN fine-tuning after completion of first 20 epochs. However, due to resource constraints I have trained the model for 20 epochs only and I have trained both CNN and Decoder right from the beginning.
 
 ### Summary
@@ -20,6 +22,15 @@ The results on Flickr30k dataset can be summarized as:
 | Ours | No | 5 | 0.631 | 0.438 | 0.303 | 0.207 | 0.174 | 0.403 | 0.119 | 0.429 |
 | Ours | Yes | 3 | 0.665 | 0.478 | 0.335 | 0.234 | 0.192 | 0.489 | 0.137 | 0.460 |
 | Ours | Yes | 5 | 0.660 | 0.475 | 0.331 | 0.230 | 0.189 | 0.483 | 0.135 | 0.458 |
+
+The authors have not released results on experiments with Flickr8k dataset. So I cannot compare my results with original implementation. On Flickr8k the results can be summarized as:
+
+|Implementation | CNN Fine Tune |Beam | BLEU-1 | BLEU-2 | BLEU-3| BLEU-4| METEOR | CIDEr | SPICE | ROUGE-L |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 3 | No | 0.623 | 0.432 | 0.292 | 0.195 | 0.200 | 0.493 | 0.141 | 0.449 |
+| 5 | No | 0.622 | 0.433 | 0.293 | 0.197 | 0.196 | 0.497 | 0.141 | 0.450 |
+| 3 | Yes | 0.663 | 0.483 | 0.337 | 0.230 | 0.211 | 0.566 | 0.150 | 0.480 |
+| 5 | Yes | 0.669 | 0.487 | 0.340 | 0.232 | 0.209 | 0.565 | 0.148 | 0.483 |
 
 
 

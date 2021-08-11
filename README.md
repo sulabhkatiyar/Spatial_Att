@@ -34,11 +34,10 @@ The authors have not released results on experiments with Flickr8k dataset. So I
 
 
 
-
+### Detailed results
 
 **For Flickr8k dataset:**
 
-In the paper, the authors have not provided results on Flickr8k Dataset. Hence, comparative analysis is not possible.
 The following table contains results obtained from our experiments without fine-tuning the CNN. VGG-16 CNN is used for image representation.
 
 |Beam | BLEU-1 | BLEU-2 | BLEU-3| BLEU-4| METEOR | CIDEr | SPICE | ROUGE-L |
@@ -90,3 +89,29 @@ The following table contains results obtained from our experiments with CNN fine
 | Ours | 15 | 0.634 | 0.460 | 0.322 | 0.223 | 0.181 | 0.466 | 0.126 | 0.449 |
 | Ours | 20 | 0.626 | 0.452 | 0.314 | 0.215 | 0.179 | 0.453 | 0.124 | 0.447 |
 
+
+### Reproducing the results:
+1. Download 'Karpathy Splits' for train, validation and testing from [here](http://cs.stanford.edu/people/karpathy/deepimagesent/caption_datasets.zip).
+2. For evaluation, the model already generates BLEU scores. In addition, it saves results and image annotations as needed in MSCOCO evaluation format. So for generation of METEOR, CIDEr, ROUGE-L and SPICE evaluation metrics, the evaluation code can be downloaded from [here](https://github.com/cocodataset/cocoapi/tree/master/PythonAPI).
+
+#### Prerequisites:
+1. This code has been tested on python 3.6.9 but should word on all python versions > 3.6.
+2. Pytorch v1.5.0
+3. CUDA v10.1
+4. Torchvision v0.6.0
+5. Numpy v.1.15.0
+6. pretrainedmodels v0.7.4 (Install from [source](https://github.com/Cadene/pretrained-models.pytorch.git)). (I think all versions will work but I have listed here for the sake of completeness.)
+
+
+#### Execution:
+1. First set the path to Flickr8k/Flickr30k/MSCOCO data folders in create_input_files.py file ('dataname' replaced by f8k/f30k/coco).
+2. Create processed dataset by running: 
+> python create_input_files.py
+
+3. To train the model:
+> python train.py
+
+4. To evaluate: 
+> python eval.py beamsize 
+
+(eg.: python train_f8k.py 20)

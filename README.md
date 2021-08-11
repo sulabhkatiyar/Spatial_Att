@@ -4,7 +4,18 @@ This is a Pytorch implementation of _Spatial Attention_ model proposed in _Knowi
 
 #### Note: This is a work in progress. I will upload detailed explanation and results from MSCOCO dataset as well.
 
-### Results
+## Results
+I have used Flickr8k and Flickr30k datasets for experiments. In the paper, authors train both the Caption Generator LSTM and the Encoder CNN (they use ResNet-152 CNN), i.e., they fine-tune the weights of pre-trained ResNet-152 CNN (which was originally trained for Object Recognition task). However, in most methods proposed in literature, the Encoder CNN has not been fine-tuned. Also, most earlier methods have used VGG-16 CNN. The choice of CNN influences Caption Generation performance, as noted in Katiyar et. al. [link](https://arxiv.org/abs/2102.11506). Hence, I have performed two sets of experiments: (a) Only Decoder (Caption-Generator) is trained with no fine-tuning of CNN. VGG-16 CNN is used as Encoder. (b) CNN is fine-tuned with learning rate of 1e-5 and Caption Generator is trained with learning rate of 4e-4. The authors of paper have trained their model for 80 epochs and started CNN fine-tuning after completion of first 20 epochs. However, due to resource constraints I have trained the model for 20 epochs only and I have trained both CNN and Decoder right from the beginning.
+
+### Summary
+
+The results on Flickr30k dataset can be summarized as:
+
+|Method | CNN Fine-Tune |Beam | BLEU-1 | BLEU-2 | BLEU-3| BLEU-4| METEOR | CIDEr | SPICE | ROUGE-L |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Original Implementation | Yes | 3 | 0.644 | 0.462 | 0.327 | 0.231 | 0.202 | 0.493 | 0.145 | 0.467 |
+
+
 
 **For Flickr8k dataset:**
 
@@ -36,7 +47,7 @@ The following table contains results obtained by fine-tuning the CNN with learni
 
 In the paper, the authors have provided results on Flickr30k Dataset. Hence, I have compared the results of my implementation with results in paper.
 
-The following table contains results obtained from our experiments without fine-tuning the CNN. VGG-16 CNN is used for image representation. Notably, authors have fine-tuned the CNN and used ResNet-152 CNN for image representation which performs better in Image Caption Generation, as noted in Katiyar et. al. [link](https://arxiv.org/abs/2102.11506).
+The following table contains results obtained from our experiments without fine-tuning the CNN. VGG-16 CNN is used for image representation. As mentioned earlier, authors have fine-tuned the CNN and used ResNet-152 CNN for image representation (which performs better than VGG-16 for Image Caption Generation, as noted in Katiyar et. al. [link](https://arxiv.org/abs/2102.11506)).
 
 |Method |Beam | BLEU-1 | BLEU-2 | BLEU-3| BLEU-4| METEOR | CIDEr | SPICE | ROUGE-L |
 |---|---|---|---|---|---|---|---|---|---|
@@ -48,7 +59,7 @@ The following table contains results obtained from our experiments without fine-
 | Ours | 15 | 0.618 | 0.426 | 0.291 | 0.195 | 0.167 | 0.389 | 0.113 | 0.423 |
 | Ours | 20 | 0.609 | 0.418 | 0.284 | 0.191 | 0.165 | 0.377 | 0.110 | 0.420 |
 
-The following table contains results obtained from our experiments with CNN fine-tuning. I have used ResNet-152 CNN for image representation and trained CNN with learning rate of 1e-5 along with decoder which is trained with learning rate of 4e-4. In the paper, authors have started training the CNN after the completion of 20 epochs and the whole model is trained till 80 epochs but I have trained both CNN and Decoder upto 20 epochs due to resource constraints.
+The following table contains results obtained from our experiments with CNN fine-tuning. I have used ResNet-152 CNN for image representation and trained CNN with learning rate of 1e-5 along with decoder which is trained with learning rate of 4e-4. In the paper, authors have started training the CNN after the completion of 20 epochs and the whole model is trained till 80 epochs but I have trained both CNN and Decoder upto 20 epochs.
 
 |Method |Beam | BLEU-1 | BLEU-2 | BLEU-3| BLEU-4| METEOR | CIDEr | SPICE | ROUGE-L |
 |---|---|---|---|---|---|---|---|---|---|
